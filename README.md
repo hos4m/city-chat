@@ -1,0 +1,3 @@
+## CityChat
+
+Experimenting with WebSockets to create chat rooms between same people in the same city so they can share information about good places to visit or activities to be done, etc...
