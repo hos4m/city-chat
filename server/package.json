@@ -1,0 +1,32 @@
+{
+  "name": "city-chat-server",
+  "version": "1.0.0",
+  "description": "The backend server for city-chat",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hos4m/city-chat.git"
+  },
+  "keywords": [
+    "express",
+    "socketio",
+    "nodejs"
+  ],
+  "author": "Hossam Mourad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hos4m/city-chat/issues"
+  },
+  "homepage": "https://github.com/hos4m/city-chat#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  }
+}
