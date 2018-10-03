@@ -11,5 +11,5 @@ ReactDOM.render(
       <Route component={NotFound} />
     </Switch>
   </Router>,
-  document.querySelector('#app'),
+  document.querySelector('#app')
 );
