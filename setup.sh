@@ -6,5 +6,5 @@ cd ./client
 npm i
 
 printf ">>> Installing backend end dependencies <<<\n"
-cd ./server
+cd ../server
 npm i
