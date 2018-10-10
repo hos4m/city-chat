@@ -1,6 +1,9 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  devServer: {
+    https: true
+  },
   module: {
     rules: [
       {
@@ -9,6 +12,10 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['css-loader']
       },
       {
         test: /\.scss$/,
