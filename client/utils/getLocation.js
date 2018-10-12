@@ -1,5 +1,17 @@
 import swal from 'sweetalert2';
 
+export default () => {
+  if (navigator.geolocation) {
+    return new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+  }
+  return swal({
+    type: 'error',
+    text: 'Geolocation is not supported by this browser'
+  });
+};
+
 export const showError = (error) => {
   switch (error.code) {
     case error.PERMISSION_DENIED:
@@ -29,16 +41,4 @@ export const showError = (error) => {
     default:
       break;
   }
-};
-
-export default () => {
-  if (navigator.geolocation) {
-    return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-  }
-  return swal({
-    type: 'error',
-    text: 'Geolocation is not supported by this browser'
-  });
 };
