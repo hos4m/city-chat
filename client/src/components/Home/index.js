@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import openSocket from 'socket.io-client';
 
+import TheMap from '../TheMap';
 import Spinner from '../shared/Spinner';
 import getLocation, { showError } from '../../../utils/getLocation';
 import config from '../../../config';
@@ -37,13 +38,7 @@ export default class Home extends Component {
     return (
       <div>
         {isLoading && <Spinner />}
-        {longitude
-          && longitude && (
-            <ul>
-              <li>{`Latitude: ${latitude}`}</li>
-              <li>{`Longitude: ${longitude}`}</li>
-            </ul>
-        )}
+        {longitude && longitude && <TheMap latitude={latitude} longitude={longitude} />}
       </div>
     );
   }
