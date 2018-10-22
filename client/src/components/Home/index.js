@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import openSocket from 'socket.io-client';
 
 import TheMap from '../TheMap';
@@ -36,10 +36,10 @@ export default class Home extends Component {
     const { isLoading, latitude, longitude } = this.state;
 
     return (
-      <div>
+      <Fragment>
         {isLoading && <Spinner />}
         {longitude && longitude && <TheMap latitude={latitude} longitude={longitude} />}
-      </div>
+      </Fragment>
     );
   }
 }
