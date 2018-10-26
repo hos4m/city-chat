@@ -6,14 +6,11 @@ import Spinner from '../shared/Spinner';
 import getLocation, { showError } from '../../../utils/getLocation';
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: false,
-      latitude: null,
-      longitude: null
-    };
-  }
+  state = {
+    isLoading: false,
+    latitude: null,
+    longitude: null
+  };
 
   async componentDidMount() {
     try {

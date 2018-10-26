@@ -4,9 +4,13 @@ import PropTypes from 'prop-types';
 import { ContextConsumer } from '../AppContext';
 
 export default class TheMap extends Component {
+  static propTypes = {
+    latitude: PropTypes.number.isRequired,
+    longitude: PropTypes.number.isRequired
+  };
+
   render() {
     const { latitude, longitude } = this.props;
-
     return (
       <ContextConsumer>
         {({ socket }) => {
@@ -22,8 +26,3 @@ export default class TheMap extends Component {
     );
   }
 }
-
-TheMap.propTypes = {
-  latitude: PropTypes.number.isRequired,
-  longitude: PropTypes.number.isRequired
-};

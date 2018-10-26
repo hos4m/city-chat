@@ -8,12 +8,13 @@ const Context = React.createContext('CityChatContext');
 export const ContextConsumer = Context.Consumer;
 
 export class ContextProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      socket: null
-    };
-  }
+  static propTypes = {
+    children: PropTypes.element.isRequired
+  };
+
+  state = {
+    socket: null
+  };
 
   componentWillMount() {
     const socket = openSocket(config.websocket.baseURL);
@@ -27,7 +28,3 @@ export class ContextProvider extends Component {
     return <Context.Provider value={{ socket }}>{children}</Context.Provider>;
   }
 }
-
-ContextProvider.propTypes = {
-  children: PropTypes.element.isRequired
-};
