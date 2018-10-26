@@ -1,10 +1,9 @@
 import React, { Component, Fragment } from 'react';
-import openSocket from 'socket.io-client';
 
+import { ContextProvider } from '../AppContext';
 import TheMap from '../TheMap';
 import Spinner from '../shared/Spinner';
 import getLocation, { showError } from '../../../utils/getLocation';
-import config from '../../../config';
 
 export default class Home extends Component {
   constructor(props) {
@@ -17,7 +16,6 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
-    openSocket(config.websocket.baseURL);
     try {
       this.setState({ isLoading: true });
       const result = await getLocation();
@@ -36,10 +34,12 @@ export default class Home extends Component {
     const { isLoading, latitude, longitude } = this.state;
 
     return (
-      <Fragment>
-        {isLoading && <Spinner />}
-        {longitude && longitude && <TheMap latitude={latitude} longitude={longitude} />}
-      </Fragment>
+      <ContextProvider>
+        <Fragment>
+          {isLoading && <Spinner />}
+          {longitude && longitude && <TheMap latitude={latitude} longitude={longitude} />}
+        </Fragment>
+      </ContextProvider>
     );
   }
 }
