@@ -2,11 +2,7 @@
   width: 100%;
   height: 100vh;
 
-  &__loading {
-    height: 100%;
-  }
-
-  &__content {
-    height: 100%;
+  &__marker {
+    color: $red;
   }
 }

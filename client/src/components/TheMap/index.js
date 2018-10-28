@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import ReactMapGL, { Marker } from 'react-map-gl';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 import { ContextConsumer } from '../AppContext';
 
 export default class TheMap extends Component {
@@ -9,19 +11,34 @@ export default class TheMap extends Component {
     longitude: PropTypes.number.isRequired
   };
 
+  state = {
+    mapParams: {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      latitude: this.props.latitude,
+      longitude: this.props.longitude,
+      zoom: 12
+    }
+  };
+
   render() {
-    const { latitude, longitude } = this.props;
+    const { mapParams } = this.state;
+
     return (
       <ContextConsumer>
-        {({ socket }) => {
-          console.log(socket);
-          return (
-            <Fragment>
-              <div>{latitude}</div>
-              <div>{longitude}</div>
-            </Fragment>
-          );
-        }}
+        {() => (
+          <section className="mapContainer">
+            <ReactMapGL
+              {...mapParams}
+              onViewportChange={data => this.setState({ mapParams: data })}
+              mapboxApiAccessToken={process.env.MAPBOX_API_ACCESSTOKEN}
+            >
+              <Marker latitude={mapParams.latitude} longitude={mapParams.longitude}>
+                <FontAwesomeIcon icon={faMapMarker} size="2x" className="mapContainer__marker" />
+              </Marker>
+            </ReactMapGL>
+          </section>
+        )}
       </ContextConsumer>
     );
   }
