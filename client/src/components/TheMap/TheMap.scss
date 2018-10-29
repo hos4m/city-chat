@@ -5,4 +5,12 @@
   &__marker {
     color: $red;
   }
+
+  &__create-room {
+    text-align: center;
+
+    p {
+      margin-bottom: $base-spacing-unit;
+    }
+  }
 }

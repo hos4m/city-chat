@@ -1,0 +1,7 @@
+.mapboxgl {
+  &-popup {
+    &-content {
+      padding: $base-spacing-unit;
+    }
+  }
+}

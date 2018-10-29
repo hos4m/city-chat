@@ -2,8 +2,13 @@ import swal from 'sweetalert2';
 
 export default () => {
   if (navigator.geolocation) {
+    const options = {
+      enableHighAccuracy: false,
+      timeout: 5000,
+      maximumAge: Infinity
+    };
     return new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
+      navigator.geolocation.getCurrentPosition(resolve, reject, options);
     });
   }
   return swal({

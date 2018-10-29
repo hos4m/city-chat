@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently 'npm run start-client' 'npm run start-server'",
     "start-client": "cd ./client && webpack-dev-server --open --mode development",
-    "start-server": "./node_modules/nodemon/bin/nodemon.js --exec node ./server/index.js",
+    "start-server": "nodemon ./server/index.js",
     "build": "webpack --mode production",
     "jslint": "./node_modules/.bin/eslint './client/**/*.js'",
     "stylelint": "stylelint './client/**/*.scss'"
