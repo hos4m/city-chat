@@ -1,3 +1,11 @@
 .no-margin {
   margin: 0;
 }
+
+.no-margin--bottom {
+  margin-bottom: 0;
+}
+
+.base-margin--bottom {
+  margin-bottom: $base-spacing-unit;
+}

@@ -44,14 +44,14 @@ export default class TheMap extends Component {
     return (
       <ContextConsumer>
         {({ socket }) => (
-          <section className="mapContainer">
+          <section className="map-container">
             <ReactMapGL
               {...mapParams}
               onViewportChange={data => this.setState({ mapParams: data })}
               mapboxApiAccessToken={process.env.MAPBOX_API_ACCESSTOKEN}
             >
               <Marker latitude={mapParams.latitude} longitude={mapParams.longitude}>
-                <FontAwesomeIcon icon={faMapMarker} size="2x" className="mapContainer__marker" />
+                <FontAwesomeIcon icon={faMapMarker} size="2x" className="map-container__marker" />
               </Marker>
               <Popup
                 latitude={mapParams.latitude}
@@ -62,8 +62,8 @@ export default class TheMap extends Component {
                 offsetLeft={12}
                 offsetTop={33}
               >
-                <div className="mapContainer__create-room">
-                  <p>
+                <div className="text-center">
+                  <p className="base-margin--bottom">
                     It seems like there is no chat rooms around you.
                     <br />
                     Go ahead and create a new one!
@@ -80,25 +80,32 @@ export default class TheMap extends Component {
                   )}
 
                   {isCreateRoomFieldsVisible && (
-                    <form className="no-margin" onSubmit={e => this.createRoom(e, socket)}>
+                    <form
+                      className="map-container__create-form animated fadeIn"
+                      onSubmit={e => this.createRoom(e, socket)}
+                    >
                       <input
                         type="text"
                         placeholder="Chat room name"
+                        className="text-center"
                         defaultValue={newRoomData.name}
                         onChange={e => this.setState({
                           newRoomData: { ...newRoomData, name: e.target.value }
                         })
                         }
+                        required
                       />
                       <textarea
                         placeholder="Chat room description"
+                        className="text-center"
                         defaultValue={newRoomData.description}
                         onChange={e => this.setState({
                           newRoomData: { ...newRoomData, description: e.target.value }
                         })
                         }
+                        required
                       />
-                      <input type="submit" value="Create Room" />
+                      <input type="submit" value="Create Room" className="no-margin--bottom" />
                     </form>
                   )}
                 </div>

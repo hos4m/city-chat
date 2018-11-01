@@ -1,4 +1,4 @@
-.mapContainer {
+.map-container {
   width: 100%;
   height: 100vh;
 
@@ -6,11 +6,8 @@
     color: $red;
   }
 
-  &__create-room {
-    text-align: center;
-
-    p {
-      margin-bottom: $base-spacing-unit;
-    }
+  &__create-form {
+    max-width: 300px;
+    margin: auto;
   }
 }
